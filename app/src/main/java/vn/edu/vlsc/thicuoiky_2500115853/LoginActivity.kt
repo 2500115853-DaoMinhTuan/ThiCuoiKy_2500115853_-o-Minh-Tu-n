@@ -1,6 +1,7 @@
 package vn.edu.vlsc.thicuoiky_2500115853
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Patterns
@@ -16,18 +17,18 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // 1. Ánh xạ các View hoàn toàn bằng findViewById
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val tvStatus = findViewById<TextView>(R.id.tvStatus)
 
-        // --- ĐIỀN SẴN THÔNG TIN TẠI ĐÂY ---
+        // 2. Dán sẵn thông tin đăng nhập vào 2 ô
         etEmail.setText("admin@gmail.com")
         etPassword.setText("123456")
 
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
-        // Hàm hỗ trợ bật bàn phím
         fun showKeyboard(view: EditText) {
             view.requestFocus()
             view.postDelayed({
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         etEmail.setOnClickListener { showKeyboard(etEmail) }
         etPassword.setOnClickListener { showKeyboard(etPassword) }
 
-        // Xử lý nút ĐĂNG NHẬP
+        // 3. Xử lý nút ĐĂNG NHẬP
         btnLogin.setOnClickListener {
             imm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
 
@@ -69,7 +70,12 @@ class LoginActivity : AppCompatActivity() {
                 else -> {
                     if (email == "admin@gmail.com" && password == "123456") {
                         tvStatus.text = "Đăng nhập thành công!"
-                        tvStatus.setTextColor(Color.parseColor("#2E7D32")) // Màu xanh lá
+                        tvStatus.setTextColor(Color.parseColor("#2E7D32"))
+
+                        // Chuyển sang màn hình ProfileActivity và gửi kèm Email qua
+                        val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+                        intent.putExtra("USER_EMAIL", email)
+                        startActivity(intent)
                     } else {
                         tvStatus.text = "Đăng nhập thất bại: Sai email hoặc mật khẩu!"
                         tvStatus.setTextColor(Color.RED)

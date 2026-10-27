@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="24dp"
+    tools:context=".ProfileActivity">
+
+    <!-- 1. Tiêu đề: Hồ sơ cá nhân -->
+    <TextView
+        android:id="@+id/tvProfileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Hồ sơ cá nhân"
+        android:textColor="#1A1A1A"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 2. TextView hiển thị Email -->
+    <TextView
+        android:id="@+id/tvUserEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#F3F4F6"
+        android:padding="16dp"
+        android:text="Email: admin@gmail.com"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
+
+    <!-- 3. Nút Đăng xuất -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#D32F2F"
+        android:text="ĐĂNG XUẤT"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUserEmail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
